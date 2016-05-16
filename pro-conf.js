@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: '.',
 
 
     // frameworks to use
@@ -35,10 +35,15 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['dots', 'junit','progress'],
+
+    junitReporter: {
+      // will be resolved to basePath (in the same way as files/exclude patterns)
+      outputFile: 'test-results.xml'
+    },
 
     coverageReporter: {
-      type : 'html',
+      type : 'cobertura',
       dir : 'coverage/'
     },
 
@@ -63,10 +68,19 @@ module.exports = function(config) {
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [ 'PhantomJS'],
 
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-ie-launcher',
+      'karma-junit-reporter',
+      'karma-commonjs',
+      'karma-coverage'
+    ],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
