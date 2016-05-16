@@ -35,7 +35,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots', 'junit','progress'],
+    reporters: ['dots', 'junit','coverage'],
 
     junitReporter: {
       // will be resolved to basePath (in the same way as files/exclude patterns)
@@ -44,7 +44,8 @@ module.exports = function(config) {
 
     coverageReporter: {
       type : 'cobertura',
-      dir : 'coverage/'
+      dir : 'coverage/',
+      file:'cobertura-coverage.xml'
     },
 
     // web server port
@@ -61,13 +62,19 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [ 'PhantomJS'],
 
+    plugins: [
+      'karma-jasmine',
+      'karma-phantomjs-launcher',
+      'karma-junit-reporter',
+      'karma-coverage'
+    ],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
