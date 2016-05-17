@@ -38,6 +38,7 @@ module.exports = function(config) {
     reporters: ['dots', 'junit','coverage'],
 
     junitReporter: {
+      outputDir : 'junit/',
       // will be resolved to basePath (in the same way as files/exclude patterns)
       outputFile: 'test-results.xml'
     },
