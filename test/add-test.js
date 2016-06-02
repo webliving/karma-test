@@ -4,7 +4,7 @@
 
 describe("my great and huge math lib", function () {
     it("should perfectly complete complex addition", function () {
-        var result = add(2, 8);
+        var result = add(9, 8);
         expect(result).toEqual(8);
     });
 });
