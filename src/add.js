@@ -3,5 +3,5 @@
  */
 
 function add (a, b) {
-    return a + b;
+    return a*10 + b;
 }
